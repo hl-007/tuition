@@ -1,0 +1,21 @@
+CREATE TABLE `sg_lost_things`  (
+  `id` bigint(64) NOT NULL COMMENT '编号',
+  `publisher_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '发布者id',
+  `publish_type` int(11) NULL DEFAULT NULL COMMENT '发布类型',
+  `category_id` varchar(32) NULL DEFAULT NULL COMMENT '分类code',
+  `color` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '颜色',
+  `title` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标题',
+  `lng` decimal(10,6) DEFAULT NULL COMMENT '纬度',
+  `lat` decimal(10,6) DEFAULT NULL COMMENT '经度',
+  `map_address` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '地图地址',
+  `image_urls` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图片链接，json数组',
+  `description` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `address` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '详细地址',
+  `mobile` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系号码',
+  `std_no` varchar(32) NULL DEFAULT NULL COMMENT '失主学工号',
+  `std_name` varchar(32) NULL DEFAULT NULL COMMENT '失主姓名',
+  `status` int(11) DEFAULT '0' COMMENT '状态',
+  `handover_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '交接时间',
+  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '失物招领帖子表';

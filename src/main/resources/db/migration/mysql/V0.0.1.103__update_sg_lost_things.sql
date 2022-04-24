@@ -1,0 +1,1 @@
+alter table sg_lost_things add xuexi varchar(32) DEFAULT NULL COMMENT '学习';
