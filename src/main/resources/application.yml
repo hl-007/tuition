@@ -1,3 +1,5 @@
+server:
+  port: 80
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -18,5 +20,3 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-server:
-  port: 80
