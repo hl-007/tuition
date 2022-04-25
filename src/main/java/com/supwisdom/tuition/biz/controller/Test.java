@@ -11,7 +11,7 @@ public class Test {
 
 	public static void read(String s) throws Exception {
 		if (!"a.txt".equals(s)) {
-			throw new Exception("文件异常");
+			throw new Exception("文件异常错误");
 		}
 	}
 }
