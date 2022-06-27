@@ -6,7 +6,6 @@ package com.supwisdom.tuition.biz.controller;
  */
 public class Test {
 	public static void main(String[] args) throws Exception {
-		read("a.txt");
 	}
 
 	public static void read(String s) throws Exception {
