@@ -105,7 +105,10 @@ public class UserController {
 	@ApiOperation("添加用户")
 	@PostMapping("add")
 	public boolean add(UserVo user) {
-		return userService.save(voToEntity.convert(user));
+		User convert = voToEntity.convert(user);
+		boolean save = userService.save(convert);
+		System.out.println(convert);
+		return save;
 	}
 
 	@ApiOperation("验证添加用户")
@@ -117,7 +120,7 @@ public class UserController {
 
 	@ApiOperation("验证修改用户")
 	@PostMapping("/updateUser")
-	public boolean updateUser(@Validated(ValidateGroup.UpdateGroup.class)  UserVo user) {
+	public boolean updateUser(@Validated(ValidateGroup.UpdateGroup.class) UserVo user) {
 		User convert = voToEntity.convert(user);
 		return userService.update(convert, null);
 	}
@@ -126,8 +129,8 @@ public class UserController {
 	@GetMapping("searchUser")
 	@ApiImplicitParams(value = {
 		@ApiImplicitParam(name = "current", value = "当前页", paramType = "query", defaultValue = "1"),
-		@ApiImplicitParam(name = "size", value = "每页记录数", paramType = "query",  defaultValue = "10"),
-		@ApiImplicitParam(name = "userName", value = "姓名",  paramType = "query")
+		@ApiImplicitParam(name = "size", value = "每页记录数", paramType = "query", defaultValue = "10"),
+		@ApiImplicitParam(name = "userName", value = "姓名", paramType = "query")
 	})
 	public boolean searchUser(@ApiIgnore Page<User> page, @Validated UserVo user) {
 		return true;
@@ -138,12 +141,13 @@ public class UserController {
 	@PostMapping("addp")
 	public boolean addp(UserVo user) {
 		List<User> list = new ArrayList<>();
-		userService.save(voToEntity.convert(user));
+		User convert = voToEntity.convert(user);
+		userService.save(convert);
 		int num = 10;
-		Lists.newArrayList(user).stream().forEach(x -> {
+		Lists.newArrayList(convert).stream().forEach(x -> {
 			for (int i = 0; i < num; i++) {
 				list.add(new User(x.getUid() + i, x.getUserName() + i,
-					x.getAge() + i, i + x.getEmail(), LocalDateTime.now()));
+					x.getAge() + i, i + x.getEmail(), x.getTelephone(), LocalDateTime.now()));
 			}
 		});
 

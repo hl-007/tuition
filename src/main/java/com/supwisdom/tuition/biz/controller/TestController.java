@@ -72,4 +72,10 @@ public class TestController {
 		});
 		return true;
 	}
+
+	@ApiOperation("print")
+	@PostMapping("print")
+	public void print() {
+		System.out.println(new User());
+	}
 }

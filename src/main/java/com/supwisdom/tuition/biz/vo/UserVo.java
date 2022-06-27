@@ -1,7 +1,9 @@
 package com.supwisdom.tuition.biz.vo;
 
 import cn.hutool.core.date.DatePattern;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.supwisdom.tuition.biz.validate.MobilePattern;
 import com.supwisdom.tuition.biz.validate.ValidateGroup;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -39,6 +41,12 @@ public class UserVo implements Serializable {
 	@Email(groups = {ValidateGroup.InsertGroup.class, ValidateGroup.UpdateGroup.class}, message = "邮箱格式不对")
 	@NotBlank(groups = {ValidateGroup.InsertGroup.class, ValidateGroup.UpdateGroup.class}, message = "添加或修改邮箱不能为空")
 	private String email;
+
+	@ApiModelProperty("电话号码")
+	@MobilePattern(groups = {ValidateGroup.InsertGroup.class, ValidateGroup.UpdateGroup.class},
+		regexp = "^1\\d{10}$", message = "请输入合理的手机电话,校验规则：^1\\d{10}$")
+	@TableField("telephone")
+	private String telephone;
 
 	@ApiModelProperty("创建时间")
 	@DateTimeFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
