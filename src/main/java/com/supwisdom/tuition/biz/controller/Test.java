@@ -6,7 +6,7 @@ package com.supwisdom.tuition.biz.controller;
  */
 public class Test {
 	public static void main(String[] args) throws Exception {
-		System.out.println("t2");
+		System.out.println("t3");
 	}
 
 	public static void read(String s) throws Exception {
